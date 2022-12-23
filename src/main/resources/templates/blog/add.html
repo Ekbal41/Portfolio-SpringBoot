@@ -1,0 +1,67 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.3/materia/bootstrap.min.css"
+      integrity="sha512-BHK6ttFyaq4IZg5NXAhqbkjOGo5fA4HMhOK9UA9MsYCGWp7QCxv1zZKNrNNzezh0jeQxk+FRC5TeKMxUrrTzrQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Add Blog</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-md">
+        <a class="navbar-brand" href="#"> Add Blog</a>
+        <a th:href="@{/admin/blog}" class="btn btn-success my-2 my-sm-0"
+          >Back</a
+        >
+      </div>
+    </nav>
+    <div class="container w-50 mt-5">
+      <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
+      <form
+        th:action="@{/admin/blog/add/save}"
+        th:object="${blog}"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <input
+          type="text"
+          th:field="*{title}"
+          class="form-control col-4 mb-4"
+          placeholder="Title"
+        />
+
+        
+
+        <input
+          type="text"
+          th:field="*{description}"
+          class="form-control col-4 mb-4"
+          placeholder="Description"
+        />
+        <div class="form-group mb-3">
+          <input type="file" name="file" class="form-control-file form-control">
+      </div>
+      
+
+       
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+        <input type="hidden" th:field="*{id}" />
+      </form>
+    </div>
+   
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
