@@ -1,52 +1,51 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
-<title>Employee</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.3/lumen/bootstrap.min.css" integrity="sha512-Y6hbhfksNvY29oe7NsJ4ED55Gi0iFDfphe/gDNbOqHce+qMt+G1FSy48+zoy2ZSwbwdLWABtVKI+ZgrInCFvHg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>Employee</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.3/litera/bootstrap.min.css"
+      integrity="sha512-bKFHl04NnBGpTyxFreApJzGG6ikCFJUZU0nBpEwPS9fbe0g+OTL2lJVc3fRNh5Q7bQtP8tYjefsJTwywPtgpyg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <style>
-        th {
-    background-color: rgb(101, 199, 124);
-    color: white;
-} 
- </style>
-</head>
-<body>
+      th {
+        background-color: rgb(101, 199, 124);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
     <div class="container w-50">
-        <h1 class="text-center mt-4">LOG IN</h1>
-        <form th:action="@{/admin_login}" method="POST" class="mt-5 w-100">
-            
-            <div th:if="${param.error}" class="alert alert-danger">
-                Invalid username and password.
-            </div>
-            <div th:if="${param.logout}" class="alert alert-success">
-                You have been logged out.
-            </div>
-            <div class="form-group mb-3">
-                <label for="">Username</label>
-                <input type="text" class="form-control p-3" name="username" id="">
-    
-            </div>
-            <div class="form-group  ">
-                <label for="">Password</label>
-                <input type="password" class="form-control p-3" name="password" id="pw">
-    
-            </div>
-            
-            <div class="d-grid gap-2 form-actions mt-3">
-  
-              <button class="btn btn-lg btn-primary" type="submit">Log In</button>
-            </div>
-    
-        </form>
-    
+      <h1 class="text-center mt-4">Admin Login</h1>
+      <form th:action="@{/admin_login}" method="POST" class="mt-5 w-100">
+        <div th:if="${param.error}" class="alert alert-danger">
+          Invalid username and password.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-success">
+          You have been logged out.
+        </div>
+        <div class="form-group mb-3">
+          <label for="">Username</label>
+          <input type="text" class="form-control p-3" name="username" id="" />
+        </div>
+        <div class="form-group">
+          <label for="">Password</label>
+          <input
+            type="password"
+            class="form-control p-3"
+            name="password"
+            id="pw"
+          />
+        </div>
+
+        <div class="d-grid gap-2 form-actions mt-3">
+          <button class="btn btn-lg btn-success" type="submit">Log In</button>
+        </div>
+      </form>
     </div>
-    
-</body>
+  </body>
 </html>
-
-
-
-

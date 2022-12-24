@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.3/litera/bootstrap.min.css" integrity="sha512-bKFHl04NnBGpTyxFreApJzGG6ikCFJUZU0nBpEwPS9fbe0g+OTL2lJVc3fRNh5Q7bQtP8tYjefsJTwywPtgpyg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.tiny.cloud/1/j7jdz5mu6r805p39jy2ve3lcbzbriyoc08c6dtmz0fxjkgdc/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-md">
+          <a class="navbar-brand" href="#"> Add Blog</a>
+          <a th:href="@{/admin/blog}" class="btn btn-success my-2 my-sm-0"
+            >Back</a
+          >
+        </div>
+      </nav>
+ 
+  <div class="container  mt-5">
+    <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
+    <form
+      th:action="@{/admin/blog/add/save}"
+      th:object="${blog}"
+      method="post"
+      enctype="multipart/form-data"
+    >
+
+    <div class="form-group mb-3">
+        <input type="file" name="file" class="form-control-file form-control">
+    </div>
+      <input
+        type="text"
+        th:field="*{title}"
+        class="form-control col-4 mb-4"
+        placeholder="Title"
+      />
+
+      
+
+      <input
+        type="hidden"
+        th:field="*{description}"
+        class="form-control col-4 mb-4"
+        placeholder="Description"
+       
+      ></input>
+
+      <textarea
+      class="mb-4"
+      >
+        Welcome to TinyMCE!
+      </textarea>
+      
+      
+      
+    
+
+    
+    
+      <button type="submit" class="btn btn-success col-2 mt-3">Save</button>
+      <input type="hidden" th:field="*{id}" />
+    </form>
+  </div>
+  <script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+      mergetags_list: [
+        { value: 'First.Name', title: 'First Name' },
+        { value: 'Email', title: 'Email' },
+      ],
+    });
+  </script>
+</body>
+</html>
