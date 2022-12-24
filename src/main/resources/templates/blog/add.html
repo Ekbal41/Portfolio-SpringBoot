@@ -16,6 +16,11 @@
       src="https://cdn.tiny.cloud/1/j7jdz5mu6r805p39jy2ve3lcbzbriyoc08c6dtmz0fxjkgdc/tinymce/6/tinymce.min.js"
       referrerpolicy="origin"
     ></script>
+    <style>
+      body{
+        background-color: #f8f9fa;
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -89,6 +94,23 @@
           th:field="*{title}"
           class="form-control col-4 mb-4"
           placeholder="Title"
+        />
+        <label
+          for="file"
+          style="
+            color: green;
+            margin-left: 10px;
+            margin-bottom: 5px;
+            text-decoration: wavy;
+            font-size: small;
+          "
+          >Tag*</label
+        >
+        <input
+          type="text"
+          th:field="*{tag}"
+          class="form-control col-4 mb-4"
+          placeholder="Tag"
         />
 
         <label

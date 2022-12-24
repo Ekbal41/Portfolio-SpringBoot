@@ -29,6 +29,9 @@
     <title>Blogs</title>
 
     <style>
+      body{
+        background-color: #f8f9fa;
+      }
       #btn {
         text-decoration: none;
         color: black;
@@ -43,17 +46,15 @@
 
       #tableID td,
       #tableID th {
-        border: 1px solid #ddd;
+        border: 1px solid green;
         padding: 8px;
       }
 
       #tableID tr:nth-child(even) {
-        background-color: #f2f2f2;
+        background-color: #ffffff;
       }
 
-      #tableID tr:hover {
-        background-color: #ddd;
-      }
+     
 
       #tableID th {
         padding-top: 12px;
@@ -62,75 +63,18 @@
         background-color: #04aa6d;
         color: white;
       }
+
+      td{
+        font-weight: 900;
+      }
+      .active>.page-link, .page-link.active {
+        z-index: 1;
+        color: #fff;
+        background-color: #04aa6d;
+        border-color: #04aa6d;
+      }
     </style>
-    <script>
-      function showdata() {
-        $(document).ready(function () {
-          $.ajax({
-            url: "/admin/getAllblog",
-            type: "GET",
-            dataType: "json",
-            success: function (response) {
-              console.log(response);
-              var len = response.length;
-              for (var i = 0; i < len; i++) {
-                var Id = response[i].id;
-                var title = response[i].title;
-
-                var description = response[i].description;
-                var imagename = response[i].imagename;
-                var id = i + 1;
-                var tr_str =
-                  "<tr>" +
-                  "<td align=''>" +
-                  id +
-                  "</td>" +
-                  "<td align=''>" +
-                  "<img src='/images/blog/" +
-                  imagename +
-                  "' width='30' height='30'" +
-                  "style='border-radius: 50%'" +
-                  " />" +
-                  "</td>" +
-                  "<td align=''>" +
-                  title +
-                  "</td>" +
-                  "<td align=''>" +
-                  "<a " +
-                  "id='btn'" +
-                  "href='/admin/blog/showUpdateForm/" +
-                  Id +
-                  "'" +
-                  ">Edit</a> | <a " +
-                  "id='btn'" +
-                  "onclick='deleteEx(" +
-                  Id +
-                  ")'" +
-                  ">Delete</a>" +
-                  "</td>" +
-                  "</tr>";
-
-                $("#tableID tbody").append(tr_str);
-              }
-            },
-          });
-        });
-      }
-
-      showdata();
-
-      function deleteEx(id) {
-        $.ajax({
-          url: "/admin/blog/deleteBlog/" + id,
-          type: "GET",
-
-          success: function (response) {
-            $("#tableID tbody").empty();
-            showdata();
-          },
-        });
-      }
-    </script>
+    
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -181,7 +125,34 @@
             <th scope="col">Actions</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          <tr th:each="blog, sid : ${blog}">
+            <td th:text="${sid.index + 1}"></td>
+            <td>
+              <img
+                th:src="@{/images/blog/}+${blog.imagename}"
+                style="width: 30px; height: 30px"
+              />
+            </td>
+            <td th:text="${blog.title}"></td>
+            <td>
+              <a
+                th:href="@{/admin/blog/showUpdateForm/}+${blog.id}"
+                style="font-size: large; font-weight: bold; text-decoration: none;color: green;"
+                type="submit"
+              >
+                <i class="bi bi-pencil-square"></i>
+              </a>
+              <a
+                th:href="@{/admin/blog/deleteBlog/}+${blog.id}"
+                style="font-size: large; font-weight: bold; text-decoration: none;color: green;"
+                type="submit"
+              >
+                <i class="bi bi-trash"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
 

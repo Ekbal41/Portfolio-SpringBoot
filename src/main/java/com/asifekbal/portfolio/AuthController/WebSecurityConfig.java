@@ -1,4 +1,5 @@
 package com.asifekbal.portfolio.AuthController;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -14,62 +15,65 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-   @Bean
-    protected UserDetailsService userDetailsService() {
-       
-        return new UserDetailServiceImpl();
-       
-    }
+  @Bean
+  protected UserDetailsService userDetailsService() {
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    return new UserDetailServiceImpl();
 
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
+  }
 
-        DaoAuthenticationProvider authprovider = new DaoAuthenticationProvider();
-        authprovider.setPasswordEncoder(passwordEncoder());
-        authprovider.setUserDetailsService(userDetailsService());
+  @Bean
+  public BCryptPasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
 
-        return authprovider;
-    }
+  @Bean
+  public DaoAuthenticationProvider authenticationProvider() {
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
-    }
+    DaoAuthenticationProvider authprovider = new DaoAuthenticationProvider();
+    authprovider.setPasswordEncoder(passwordEncoder());
+    authprovider.setUserDetailsService(userDetailsService());
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-      http.authorizeRequests().antMatchers("/").permitAll()
-      .antMatchers("/register").hasAuthority("admin")
-      .anyRequest().authenticated()
-      .and()
-        .formLogin()
-        .loginPage("/admin_login")
-        .permitAll()
-      .and()
-        .logout().logoutSuccessUrl("/").invalidateHttpSession(true)
-        .permitAll()
-      .and()
-        .exceptionHandling().accessDeniedPage("/403")
-      .and()
-        .csrf().disable()
-        .headers().frameOptions().disable();
+    return authprovider;
+  }
 
-      
-      
-      
-    }
+  @Override
+  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    auth.authenticationProvider(authenticationProvider());
+  }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring()
-                .antMatchers("/h2/**")
-                .antMatchers("/resources/**", "/static/**","/lib/**", "/contactform/**", "/css/**", "/js/**", "/img/**", "/images/**","/blog/**", "/icon/**");
-    }
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    http.authorizeRequests()
+    .antMatchers( "/").permitAll()
+    .antMatchers("admin").hasAuthority("admin")
+    .antMatchers("/register/").hasAuthority("admin")
+  
+    
+    
+    .anyRequest().authenticated()
+    .and()
+      .formLogin()
+      .loginPage("/admin_login")
+      .permitAll()
+    .and()
+      .logout().logoutSuccessUrl("/").invalidateHttpSession(true)
+      .permitAll()
+    .and()
+      .exceptionHandling().accessDeniedPage("/403")
+    .and()
+      .csrf().disable()
+      .headers().frameOptions().disable();
 
-   
+  }
+
+  @Override
+  public void configure(WebSecurity web) throws Exception {
+    web.ignoring()
+        .antMatchers("/h2/**")
+        .antMatchers("/resources/**", "/static/**", "/lib/**",
+         "/contactform/**", "/css/**", "/js/**", "/img/**",
+            "/images/**", "/blog/**", "/icon/**");
+  }
+
 }

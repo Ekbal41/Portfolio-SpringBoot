@@ -40,20 +40,22 @@ public class BlogController {
 		return "blog/blog";
 	}
 
-	@GetMapping("admin/blog/add")
+	
+
+	@GetMapping("/admin/blog/add")
 	public String addExpense(Model model) {
 		model.addAttribute("blog", new Blog());
 		return "blog/add";
 	}
 
-	@GetMapping("admin/blog/showUpdateForm/{id}")
+	@GetMapping("/admin/blog/showUpdateForm/{id}")
 	public String showUpdateForm(@PathVariable("id") long id, Model model) {
 		Blog blog = blogRepo.findById(id).get();
 		model.addAttribute("blog", blog);
 		return "blog/add";
 	}
 
-	@GetMapping("admin/blog/deleteBlog/{id}")
+	@GetMapping("/admin/blog/deleteBlog/{id}")
 	public String deleteExpense(@PathVariable("id") long id) {
         Blog blog = blogRepo.findById(id).get();
 

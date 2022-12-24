@@ -25,6 +25,12 @@
         text-decoration: none;
       }
 
+      .js-spin:hover {
+        animation: spin-animation 01s infinite;
+        display: inline-block;
+        text-decoration: none;
+      }
+
       @keyframes spin-animation {
         0% {
           transform: rotate(0deg);
@@ -32,6 +38,9 @@
         100% {
           transform: rotate(359deg);
         }
+      }
+      body {
+        background-color: #f8f9fa;
       }
     </style>
   </head>
@@ -89,6 +98,18 @@
           >Home</a
         >
         <i class="bi bi-house-heart"></i>
+      </p>
+      <p>
+        <a
+          href="/logout"
+          style="
+            font-size: large;
+            font-weight: bold;
+            text-decoration: none;
+            color: green;
+          "
+          ><i class="bi bi-door-open"></i
+        ></a>
       </p>
     </div>
 
