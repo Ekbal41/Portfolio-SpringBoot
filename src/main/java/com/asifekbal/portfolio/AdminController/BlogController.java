@@ -88,7 +88,7 @@ public class BlogController {
 
 		blog.setImagename(fileName);
 		blogRepo.save(blog);
-		return "redirect:/admin/blog";
+		return "redirect:/admin/panel/blog";
 	}
 
 }

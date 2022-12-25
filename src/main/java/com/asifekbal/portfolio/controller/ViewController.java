@@ -13,7 +13,7 @@ import com.asifekbal.portfolio.repository.BlogRepository;
 
 
 
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -29,11 +29,11 @@ public class ViewController {
     }
 
 
-    @GetMapping("/blog")
+    @GetMapping("/blogpage")
     public String blog (Model model) {
        
         model.addAttribute("blogs", blogRepo.findAll());
-        return "blog/single";
+        return "blog/blogpage";
     }
 
     @GetMapping("blog/{id}")

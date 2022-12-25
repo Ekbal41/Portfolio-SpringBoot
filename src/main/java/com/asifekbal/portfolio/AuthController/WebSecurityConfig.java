@@ -46,6 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
     .antMatchers( "/").permitAll()
+    .antMatchers( "/blogpage").permitAll()
     .antMatchers("admin").hasAuthority("admin")
     .antMatchers("/register/").hasAuthority("admin")
   
@@ -71,8 +72,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   public void configure(WebSecurity web) throws Exception {
     web.ignoring()
         .antMatchers("/h2/**")
-        .antMatchers("/resources/**", "/static/**", "/lib/**",
-         "/contactform/**", "/css/**", "/js/**", "/img/**",
+        .antMatchers("/resources/**", "/static/**", "/lib/**","/pcss/**","/pjs/**","/pfonts/**",
+         "/contactform/**", "/css/**", "/js/**", "/img/**","/dataTables/**","/flot/**",
             "/images/**", "/blog/**", "/icon/**");
   }
 

@@ -529,12 +529,19 @@
         
 
         <div class="col-md-4"th:each="blog, iStat : ${blogs}">
-          <div class="card card-blog">
-            <div class="card-img">
-              <a th:href="@{/blog/}+${blog.id}"><img th:src="@{'images/blog/' + ${blog.imagename} }"  alt="" style="height: 200px;" class="img-fluid"></a>
+          <div class="card card-blog"
+          style="border-radius: 20px 20px 0px 0px;"
+          >
+            <div class="card-img"
+            
+            >
+              <a th:href="@{/blog/}+${blog.id}"><img  th:src="@{'images/blog/' + ${blog.imagename} }"  alt="" style="border-radius: 20px 20px 0px 0px;height: 200px;" class="img-fluid"></a>
              
             <div class="card-body">
               <div class="card-category-box">
+                <div class="card-category">
+                  <h6 class="category" th:text="${blog.tag}" ></h6>
+                </div>
                
               </div>
               <h3 class="card-title"><a th:href="@{/blog/}+${blog.id}" th:text="${blog.title}" > </a></h3>
@@ -550,15 +557,18 @@
                 </a>
               </div>
               <div class="post-date">
-                <span class="ion-ios-clock-outline"></span> 🎉
+                🎉
               </div>
             </div>
           </div>
         </div>
+
+       
         
         
       </div>
     </div>
+    <a th:href="@{/blogpage}" class="btn btn-primary">See More</a>
   </section>
   <!--/ Section Blog End /-->
 
