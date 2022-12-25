@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,7 @@ import com.asifekbal.portfolio.repository.BlogRepository;
 
 
 @Controller
+@CrossOrigin(origins = "*")
 public class BlogController {
 	private final String UPLOAD_DIR = System.getProperty("user.dir") + "/src/main/resources/static/images/blog/";
 

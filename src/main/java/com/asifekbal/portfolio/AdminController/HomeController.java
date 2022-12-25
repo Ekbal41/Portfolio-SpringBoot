@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.asifekbal.portfolio.repository.BlogRepository;
 import com.asifekbal.portfolio.model.Blog;
 @Controller
+@CrossOrigin(origins = "*")
 public class HomeController {
 
     @Autowired
