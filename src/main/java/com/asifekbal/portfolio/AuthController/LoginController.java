@@ -47,7 +47,7 @@ public class LoginController {
     return new BCryptPasswordEncoder();
    }
 
-    @PostMapping("/save_user")
+    @PostMapping("/register/save_user")
     public String saveEmployee(UserSTO userSTO) {
         User user = new User();
 
@@ -62,6 +62,6 @@ public class LoginController {
         user.setEmail(userSTO.getEmail());
         userRepo.save(user);
         
-        return "redirect:/";
+        return "redirect:/register";
     }
 }
