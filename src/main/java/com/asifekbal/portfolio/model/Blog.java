@@ -20,7 +20,7 @@ public class Blog {
     private String tag;
     private String shortdesc;
 
-    @Column(name="notes",columnDefinition="LONGTEXT")
+    @Column(name="notes",columnDefinition="LONGTEXT",nullable = false,  length = 4096)
     private String description;
     private String imagename;
     

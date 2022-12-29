@@ -74,7 +74,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/h2/**")
         .antMatchers("/resources/**", "/static/**", "/lib/**","/pcss/**","/pjs/**","/pfonts/**",
          "/contactform/**", "/css/**", "/js/**", "/img/**","/dataTables/**","/flot/**",
-            "/images/**", "/blog/**", "/icon/**");
+            "/images/**", "/blog/**","/project/**", "/icon/**");
   }
 
 }

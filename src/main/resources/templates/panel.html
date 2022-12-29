@@ -102,12 +102,12 @@
                       <i class="fa fa-edit fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                      <div class="huge">12</div>
+                      <div class="huge" th:text="${project_count}"></div>
                       <div>Projects!</div>
                     </div>
                   </div>
                 </div>
-                <a th:href="@{/admin/panel/blog}">
+                <a th:href="@{/admin/panel/project}">
                   <div class="panel-footer">
                     <span class="pull-left">View Projects</span>
                     <span class="pull-right"

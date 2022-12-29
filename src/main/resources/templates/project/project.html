@@ -3,7 +3,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link th:href="@{img/favicon.png}" rel="icon">
+    <link th:href="@{/img/favicon.png}" rel="icon">
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -26,7 +26,7 @@
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
       crossorigin="anonymous"
     ></script>
-    <title>Blogs</title>
+    <title>Projects</title>
 
     <style>
       body{
@@ -81,9 +81,9 @@
       <div class="container-md">
         <a
           class="navbar-brand"
-          href="/admin/blog"
+          href="/admin/project"
           style="font-weight: bold; color: green; font-size: xx-large"
-          >Blogs</a
+          >Projects</a
         >
 
         <a
@@ -95,7 +95,7 @@
         </a>
 
         <a
-          th:href="@{/admin/blog/add}"
+          th:href="@{/admin/project/add}"
           style="font-size: large; font-weight: bold; text-decoration: none;color: green;"
           type="submit"
         >
@@ -126,25 +126,25 @@
           </tr>
         </thead>
         <tbody>
-          <tr th:each="blog, sid : ${blog}">
+          <tr th:each="project, sid : ${project}">
             <td th:text="${sid.index + 1}"></td>
             <td>
               <img
-                th:src="@{/images/blog/}+${blog.imagename}"
+                th:src="@{/images/project/}+${project.imagename}"
                 style="width: 30px; height: 30px"
               />
             </td>
-            <td th:text="${blog.title}"></td>
+            <td th:text="${project.title}"></td>
             <td>
               <a
-                th:href="@{/admin/blog/showUpdateForm/}+${blog.id}"
+                th:href="@{/admin/project/showUpdateForm/}+${project.id}"
                 style="font-size: large; font-weight: bold; text-decoration: none;color: green;"
                 type="submit"
               >
                 <i class="bi bi-pencil-square"></i>
               </a>
               <a
-                th:href="@{/admin/blog/deleteBlog/}+${blog.id}"
+                th:href="@{/admin/project/deleteProject/}+${project.id}"
                 style="font-size: large; font-weight: bold; text-decoration: none;color: green;"
                 type="submit"
               >
