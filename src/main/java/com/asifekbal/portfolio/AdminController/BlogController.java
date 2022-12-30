@@ -28,7 +28,7 @@ import com.asifekbal.portfolio.repository.BlogRepository;
 @Controller
 @CrossOrigin(origins = "*")
 public class BlogController {
-	private final String UPLOAD_DIR ="https://" + System.getProperty("user.dir") + "/src/main/resources/static/images/blog/";
+	private final String UPLOAD_DIR ="./src/main/resources/static/images/blog/";
 
 	@Autowired
 	BlogRepository blogRepo;
