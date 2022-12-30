@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <title th:text="${project.title}"></title>
+  <title th:text="${project.title}" ></title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -33,7 +33,7 @@
 
   <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll" href="#page-top" style="font-family: 'Itim', cursive;">Asif Ekbal</a>
+      <a class="navbar-brand js-scroll" th:href="@{/}" style="font-family: 'Itim', cursive;">Asif Ekbal</a>
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
         aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span></span>
@@ -47,7 +47,7 @@
           </li>
          
           <li class="nav-item">
-            <a class="nav-link active" href="#"  th:text="${project.title}"></a>
+            <a class="nav-link active" href="#"  >project Detail</a>
           </li>
           <li class="nav-item">
             <a class="nav-link  " href="/admin" sec:authorize="hasAuthority('ROLE_ADMIN')"
@@ -71,15 +71,17 @@
     <div class="intro-content display-table">
       <div class="table-cell">
         <div class="container">
-          <h2 class="intro-title mb-4" style="font-family: 'Itim', cursive;">Project Details</h2>
+          <h2 class="intro-title mb-4" style="font-family: 'Itim', cursive;" th:text="${project.title}">Project Details</h2>
           <ol class="breadcrumb d-flex justify-content-center">
             <li class="breadcrumb-item">
               <a th:href="@{/}">Home</a>
             </li>
             <li class="breadcrumb-item">
-              <a href="#">Project</a>
+              <a th:href="@{/projectpage}">Project</a>
             </li>
-            <li class="breadcrumb-item active" th:text="${project.title}"></li>
+            <li class="breadcrumb-item active"
+            style="text-transform: capitalize;"
+             th:text="${project.title}"></li>
           </ol>
         </div>
       </div>
@@ -97,20 +99,17 @@
               <img src="img/post-1.jpg" class="img-fluid" alt="">
             </div>
             <div class="post-meta">
-              <h1 class="article-title"th:text="${project.title}"></h1>
+              <h1 class="article-title" style="text-transform: capitalize;"th:text="${project.title}"></h1>
               <ul>
                 <li>
                   <span class="ion-ios-person"></span>
-                  <a href="#">Asif Ekbal</a>
+                  <a href="/">Asif Ekbal</a>
                 </li>
                 <li>
                   <span class="ion-pricetag"></span>
-                  <a href="#"  th:text="${project.tag}"></a>
+                  <a href="#" style="text-transform: capitalize;" th:text="${project.tag}"></a>
                 </li>
-                <li>
-                  <span class="ion-chatbox"></span>
-                  <a href="#">14</a>
-                </li>
+                
               </ul>
             </div>
             <div class="article-content" th:utext="${project.description}">
@@ -120,27 +119,13 @@
           
         </div>
         <div class="col-md-4">
-          <div class="widget-sidebar sidebar-search">
-            <h5 class="sidebar-title">Search</h5>
-            <div class="sidebar-content">
-              <form>
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-secondary btn-search" type="button">
-                      <span class="ion-android-search"></span>
-                    </button>
-                  </span>
-                </div>
-              </form>
-            </div>
-          </div>
+         
           <div class="widget-sidebar">
             <h5 class="sidebar-title">Recent Post</h5>
             <div class="sidebar-content">
               <ul class="list-sidebar">
                 <li th:each="project : ${projects}">
-                  <a th:href="@{/project/}+${project.id}" th:text="${project.title}"></a>
+                  <a th:href="@{/project/}+${project.id}" th:text="${project.title}" style="text-transform: capitalize;"></a>
                 </li>
                
               </ul>
@@ -152,7 +137,7 @@
             <div class="sidebar-content">
               <ul>
                 <li>
-                  <a href="#"  th:text="${project.tag}"></a>
+                  <a href="#"  th:text="${project.tag}" style="text-transform: capitalize;"></a>
                 </li>
                 
               </ul>

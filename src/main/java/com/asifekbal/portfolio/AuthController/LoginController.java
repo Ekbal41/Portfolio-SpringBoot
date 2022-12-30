@@ -38,6 +38,14 @@ public class LoginController {
 
     @GetMapping("/register")
     public String addNewEmployee(Model model) {
+        Role role = new Role();
+        role.setId(1);
+        role.setName("ROLE_ADMIN");
+        roleRepo.save(role);
+        Role role2 = new Role();
+        role2.setId(2);
+        role2.setName("ROLE_USER");
+        roleRepo.save(role2);
         UserSTO userSTO = new UserSTO();
         model.addAttribute("userSTO", userSTO);
         return "register";

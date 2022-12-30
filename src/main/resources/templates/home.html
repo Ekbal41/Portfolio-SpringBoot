@@ -29,26 +29,74 @@
   <link th:href="@{css/style.css}" rel="stylesheet">
 
   <style> @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap'); </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script  type="text/javascript">
+     function btnclicked(){
+      document.getElementById("sbtn").innerHTML = "Sending...";
+    }
+    $(document).ready(function () {
+ 
+ window.setTimeout(function() {
+     $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+         $(this).remove(); 
+     });
+ }, 5000);
+  
+ });
+  </script>
+
 
  
 </head>
 
 <body id="page-top">
 
+
   <!--/ Nav Star /-->
   <div th:replace="fragments/nav :: nav"></div>
   <!--/ Nav End /-->
+ 
+
+ 
 
   <!--/ Intro Skew Star /-->
-  <div id="home" class="intro route bg-image" style="background-image: url(img/herophoto.png)">
+  <div id="home" class="intro route bg-image" style="background-image: url(img/herophoto.jpg)">
     <div class="overlay-itro"></div>
     <div class="intro-content display-table">
       <div class="table-cell">
         <div class="container">
+          <div th:if="${message == 's'}" 
+          align="center"
+          >
+            <div class="alert alert-success alert-dismissible fade show w-50" role="alert"
+           
+            >
+              <strong>Success!</strong> Message sent successfully.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+          </div>
+          <div th:if="${message == 'e'}" 
+          align="center"
+          >
+            <div class="alert alert-danger alert-dismissible fade show w-50" role="alert"
+           
+            >
+              <strong>Erorr!</strong> Please try again.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+          </div>
+         
+     
           <!--<p class="display-6 color-d">Hello, world!</p>-->
           <h1 class="intro-title mb-4"
           style="font-family: 'Itim', cursive;"
-          >I am Asif Ekbal</h1>
+          >I'm Asif Ekbal</h1>
           <p class="intro-subtitle" style="font-family: 'Itim', cursive;"><span
            
              class="text-slider-items">Web Developer,Web Designer,Frontend Developer,Backend Developer</span><strong class="text-slider"></strong></p>
@@ -129,12 +177,18 @@
 
                     Web Developer | Web Development | Django | Laravel | React
                   </p>
+                  <a href="#contact" class="button button-a button-big button-rouded js-scroll"
+                  style="margin-left: 50%; margin-top: 2%; margin-bottom: 4%;"
+                  >Hire Me</a>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
+        
       </div>
+     
     </div>
   </section>
 
@@ -148,7 +202,7 @@
               Services
             </h3>
             <p class="subtitle-a">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+             Services I Provide
             </p>
             <div class="line-mf"></div>
           </div>
@@ -163,9 +217,7 @@
             <div class="service-content">
               <h2 class="s-title">Web Design</h2>
               <p class="s-description text-center">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia,
-                provident vitae! Magni
-                tempora perferendis eum non provident.
+                Web design is the process of creating websites. It encompasses several different aspects, including webpage layout, content production, and graphic design.
               </p>
             </div>
           </div>
@@ -178,28 +230,12 @@
             <div class="service-content">
               <h2 class="s-title">Web Development</h2>
               <p class="s-description text-center">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia,
-                provident vitae! Magni
-                tempora perferendis eum non provident.
+               Web development is the work involved in developing a web site for the Internet (World Wide Web) or an intranet (a private network).
               </p>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="service-box">
-            <div class="service-ico">
-              <span class="ico-circle"><i class="ion-camera"></i></span>
-            </div>
-            <div class="service-content">
-              <h2 class="s-title">Photography</h2>
-              <p class="s-description text-center">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia,
-                provident vitae! Magni
-                tempora perferendis eum non provident.
-              </p>
-            </div>
-          </div>
-        </div>
+        
         <div class="col-md-4">
           <div class="service-box">
             <div class="service-ico">
@@ -208,42 +244,13 @@
             <div class="service-content">
               <h2 class="s-title">Responsive Design</h2>
               <p class="s-description text-center">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia,
-                provident vitae! Magni
-                tempora perferendis eum non provident.
+               Responsive web design is an approach to web design aimed at allowing desktop webpages to be viewed in response to the size of the screen or web browser one is viewing with.
               </p>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="service-box">
-            <div class="service-ico">
-              <span class="ico-circle"><i class="ion-paintbrush"></i></span>
-            </div>
-            <div class="service-content">
-              <h2 class="s-title">Graphic Design</h2>
-              <p class="s-description text-center">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia,
-                provident vitae! Magni
-                tempora perferendis eum non provident.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service-box">
-            <div class="service-ico">
-              <span class="ico-circle"><i class="ion-stats-bars"></i></span>
-            </div>
-            <div class="service-content">
-              <h2 class="s-title">Marketing Services</h2>
-              <p class="s-description text-center">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia,
-                provident vitae! Magni
-                tempora perferendis eum non provident.
-              </p>
-            </div>
-          </div>
+       
+       
         </div>
       </div>
     </div>
@@ -260,7 +267,7 @@
               <span class="ico-circle"><i class="ion-checkmark-round"></i></span>
             </div>
             <div class="counter-num">
-              <p class="counter">450</p>
+              <p class="counter">50</p>
               <span class="counter-text">WORKS COMPLETED</span>
             </div>
           </div>
@@ -271,7 +278,7 @@
               <span class="ico-circle"><i class="ion-ios-calendar-outline"></i></span>
             </div>
             <div class="counter-num">
-              <p class="counter">15</p>
+              <p class="counter">2</p>
               <span class="counter-text">YEARS OF EXPERIENCE</span>
             </div>
           </div>
@@ -282,7 +289,7 @@
               <span class="ico-circle"><i class="ion-ios-people"></i></span>
             </div>
             <div class="counter-num">
-              <p class="counter">550</p>
+              <p class="counter">5</p>
               <span class="counter-text">TOTAL CLIENTS</span>
             </div>
           </div>
@@ -290,14 +297,15 @@
         <div class="col-sm-3 col-lg-3">
           <div class="counter-box pt-4 pt-md-0">
             <div class="counter-ico">
-              <span class="ico-circle"><i class="ion-ribbon-a"></i></span>
+              <span class="ico-circle"><i class="ion-ios-calendar-outline"></i></span>
             </div>
             <div class="counter-num">
-              <p class="counter">36</p>
-              <span class="counter-text">AWARD WON</span>
+              <p class="counter">3</p>
+              <span class="counter-text">WORKING ON</span>
             </div>
           </div>
         </div>
+        
       </div>
     </div>
   </div>
@@ -319,8 +327,10 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4"  th:each="project, iStat : ${projects}">
-          <div class="work-box">
+        <div class="col-md-4"  th:each="project, iStat : ${projects}"
+        
+        >
+          <div class="work-box" style="border: 1px solid #0078FF;">
             <a  th:href="@{'images/project/' + ${project.imagename} }" data-lightbox="gallery-mf">
               <div class="work-img">
                 <img  th:src="@{'images/project/' + ${project.imagename} }" alt="" class="img-fluid">
@@ -328,14 +338,18 @@
               <div class="work-content">
                 <div class="row">
                   <div class="col-sm-8">
-                    <a  th:href="@{/project/}+${project.id}" class="w-title"  th:text="${project.title}"></a>
+                    <a  th:href="@{/project/}+${project.id}" class="w-title"  th:text="${project.title}" style="text-transform: capitalize;"></a>
                     <div class="w-more">
-                      <span class="w-ctegory"  th:text="${project.tag}"></span> / <span class="w-date">🎉</span>
+                      <span class="w-ctegory"  th:text="${project.tag}" style="text-transform: capitalize;"></span>
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <div class="w-like">
-                      <a  th:href="@{/project/}+${project.id}" ><i class="bi bi-github"></i></a>
+                      <a  th:href="@{/project/}+${project.id}" >
+                        <i 
+                        style="font-size: 30px; color: #0078FF;margin-right: 30px; "
+                       
+                         class=" bi bi-github"></i></a>
                     </div>
                   </div>
                 </div>
@@ -366,26 +380,38 @@
           <div id="testimonial-mf" class="owl-carousel owl-theme">
             <div class="testimonial-box">
               <div class="author-test">
-                <img src="img/testimonial-2.jpg" alt="" class="rounded-circle b-shadow-a">
-                <span class="author">Xavi Alonso</span>
+                <img src="img/avater.png"
+                style="width: 120px; height: 120px;"
+                 alt="" class="rounded-circle b-shadow-a">
+                <span class="author">Anvi Ray</span>
               </div>
               <div class="content-test">
                 <p class="description lead">
-                  Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit.
+                  Good work, keep it up! I will definitely recommend you to my friends. I love your work.
                 </p>
                 <span class="comit"><i class="fa fa-quote-right"></i></span>
               </div>
             </div>
             <div class="testimonial-box">
               <div class="author-test">
-                <img src="img/testimonial-4.jpg" alt="" class="rounded-circle b-shadow-a">
-                <span class="author">Marta Socrate</span>
+                <img src="img/avater.png" style="width: 120px; height: 120px;" alt="" class="rounded-circle b-shadow-a">
+                <span class="author">Jasnin</span>
               </div>
               <div class="content-test">
                 <p class="description lead">
-                  Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit.
+                  I am very happy with the work you have done for me. It's exactly what I wanted. Thank you so much!
+                </p>
+                <span class="comit"><i class="fa fa-quote-right"></i></span>
+              </div>
+            </div>
+            <div class="testimonial-box">
+              <div class="author-test">
+                <img src="img/avater.png" style="width: 120px; height: 120px;" alt="" class="rounded-circle b-shadow-a">
+                <span class="author">Lina</span>
+              </div>
+              <div class="content-test">
+                <p class="description lead">
+                 Great work and very professional. I will hire you again for sure.
                 </p>
                 <span class="comit"><i class="fa fa-quote-right"></i></span>
               </div>
@@ -422,21 +448,22 @@
 
         <div class="col-md-4"th:each="blog, iStat : ${blogs}">
           <div class="card card-blog"
-          style="border-radius: 20px 20px 0px 0px;"
+          style=" border: 1px solid #0078FF;"
+          
           >
             <div class="card-img"
             
             >
-              <a th:href="@{/blog/}+${blog.id}"><img  th:src="@{'images/blog/' + ${blog.imagename} }"  alt="" style="border-radius: 20px 20px 0px 0px;height: 200px;" class="img-fluid"></a>
+              <a th:href="@{/blog/}+${blog.id}"><img  th:src="@{'images/blog/' + ${blog.imagename} }"  alt="" style="height: 200px;" class="img-fluid"></a>
              
             <div class="card-body">
               <div class="card-category-box">
                 <div class="card-category">
-                  <h6 class="category" th:text="${blog.tag}" ></h6>
+                  <h6 class="category" th:text="${blog.tag}"style="text-transform: capitalize;" ></h6>
                 </div>
                
               </div>
-              <h3 class="card-title"><a th:href="@{/blog/}+${blog.id}" th:text="${blog.title}" > </a></h3>
+              <h3 class="card-title"><a th:href="@{/blog/}+${blog.id}" th:text="${blog.title}" style="text-transform: capitalize;"> </a></h3>
               <p class="card-description" th:text="${blog.shortdesc}">
                 
               </p>
@@ -478,40 +505,29 @@
                 <div class="col-md-6">
                   <div class="title-box-2">
                     <h5 class="title-left">
-                      Send Message Us
+                      Send Me A Message
                     </h5>
                   </div>
                   <div>
-                      <form action="" method="post" role="form" class="contactForm">
-                      <div id="sendmessage">Your message has been sent. Thank you!</div>
-                      <div id="errormessage"></div>
+                    <form th:action="@{/sendmail}" method="post" role="form" class="contactForm">
+                      
                       <div class="row">
+                       
                         <div class="col-md-12 mb-3">
                           <div class="form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                            <div class="validation"></div>
+                            <input type="email" class="form-control" name="sender" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                           
                           </div>
                         </div>
+                        
                         <div class="col-md-12 mb-3">
                           <div class="form-group">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                            <div class="validation"></div>
-                          </div>
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <div class="form-group">
-                              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                              <div class="validation"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-3">
-                          <div class="form-group">
-                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                            <div class="validation"></div>
+                            <textarea class="form-control" id="body" name="body" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                            
                           </div>
                         </div>
                         <div class="col-md-12">
-                          <button type="submit" class="button button-a button-big button-rouded">Send Message</button>
+                          <button type="submit" onclick="btnclicked()" id="sbtn" class="button button-a button-big button-rouded">Send Message</button>
                         </div>
                       </div>
                     </form>
@@ -525,23 +541,20 @@
                   </div>
                   <div class="more-info">
                     <p class="lead">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolorum dolorem soluta quidem
-                      expedita aperiam aliquid at.
-                      Totam magni ipsum suscipit amet? Autem nemo esse laboriosam ratione nobis
-                      mollitia inventore?
+                     Contact me for any kind of work. I am available for freelance work.
                     </p>
                     <ul class="list-ico">
-                      <li><span class="ion-ios-location"></span> 329 WASHINGTON ST BOSTON, MA 02108</li>
-                      <li><span class="ion-ios-telephone"></span> (617) 557-0089</li>
-                      <li><span class="ion-email"></span> contact@example.com</li>
+                      <li><span class="ion-ios-location"></span> DHAKA, BANGLADESH</li>
+                      <li><span class="ion-ios-telephone"></span> 01796900817</li>
+                      <li><span class="ion-email"></span> mdasifekbalshagor@gmail.com</li>
                     </ul>
                   </div>
                   <div class="socials">
                     <ul>
-                      <li><a href=""><span class="ico-circle"><i class="ion-social-facebook"></i></span></a></li>
-                      <li><a href=""><span class="ico-circle"><i class="ion-social-instagram"></i></span></a></li>
-                      <li><a href=""><span class="ico-circle"><i class="ion-social-twitter"></i></span></a></li>
-                      <li><a href=""><span class="ico-circle"><i class="ion-social-pinterest"></i></span></a></li>
+                      <li><a href="https://facebook.com/Ekbal41"><span class="ico-circle"><i class="ion-social-facebook"></i></span></a></li>
+                      <li><a href="https://twitter.com/Ekbal41"><span class="ico-circle"><i class="ion-social-twitter"></i></span></a></li>
+                      <li><a href="https://github.com/Ekbal41"><span class="ico-circle"><i class="ion-social-github"></i></span></a></li>
+                     
                     </ul>
                   </div>
                 </div>
@@ -569,9 +582,7 @@
   <script th:src="@{lib/owlcarousel/owl.carousel.min.js}"></script>
   <script th:src="@{lib/lightbox/js/lightbox.min.js}"></script>
   <script th:src="@{lib/typed/typed.min.js}"></script>
-  <!-- Contact Form JavaScript File -->
-  <script th:src="@{contactform/contactform.js}"></script>
-
+  
   <!-- Template Main Javascript File -->
   <script th:src="@{js/main.js}"></script>
 
