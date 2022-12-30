@@ -60,7 +60,7 @@ public class LoginController {
         User user = new User();
 
         Set<Role> roles = new HashSet<>();
-        roles.add(roleRepo.findByName("ROLE_ADMIN"));
+        roles.add(roleRepo.findByName("ROLE_USER"));
             user.setRoles(roles);
 
         String password = encoder().encode(userSTO.getPassword());
