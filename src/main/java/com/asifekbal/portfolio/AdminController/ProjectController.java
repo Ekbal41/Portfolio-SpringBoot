@@ -28,7 +28,7 @@ import com.asifekbal.portfolio.repository.ProjectRepository;
 @Controller
 @CrossOrigin(origins = "*")
 public class ProjectController {
-	private final String UPLOAD_DIR = System.getProperty("user.dir") + "/src/main/resources/static/images/project/";
+	private final String UPLOAD_DIR = "https://" + System.getProperty("user.dir") + "/src/main/resources/static/images/project/";
 
 	@Autowired
 	ProjectRepository projectRepo;
