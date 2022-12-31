@@ -97,9 +97,9 @@
         
         >
           <div class="work-box" style="border: 1px solid #0078FF;">
-            <a  th:href="@{'images/project/' + ${project.imagename} }" data-lightbox="gallery-mf">
+            <a  th:href="@{'images/' + ${project.imagename} }" data-lightbox="gallery-mf">
               <div class="work-img">
-                <img  th:src="@{'images/project/' + ${project.imagename} }" alt="" class="img-fluid">
+                <img style="height:200px;"  th:src="@{'images/' + ${project.imagename} }" alt="" class="img-fluid">
               </div>
               <div class="work-content">
                 <div class="row">

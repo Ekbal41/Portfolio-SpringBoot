@@ -28,8 +28,8 @@ import com.asifekbal.portfolio.repository.ProjectRepository;
 @Controller
 @CrossOrigin(origins = "*")
 public class ProjectController {
-	//private final String UPLOAD_DIR ="./src/main/resources/static/images/project/";
-	Path UPLOAD_DIR = Paths.get(new FileSystemResource("static/images/project").getFile().getPath() );
+	//private final String UPLOAD_DIR ="./src/main/resources/static/images/";
+	Path UPLOAD_DIR = Paths.get(new FileSystemResource("static/images").getFile().getPath() );
 
 	@Autowired
 	ProjectRepository projectRepo;
