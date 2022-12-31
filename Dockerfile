@@ -10,5 +10,5 @@
     FROM openjdk:11-jre-slim
     COPY --from=build /target/portfolio-0.0.1-SNAPSHOT.jar portfolio.jar
     # ENV PORT=8080
-    EXPOSE 0.0.0.0:$PORT
+    EXPOSE `0.0.0.0:$PORT`
     ENTRYPOINT ["java","-jar","portfolio.jar"]
