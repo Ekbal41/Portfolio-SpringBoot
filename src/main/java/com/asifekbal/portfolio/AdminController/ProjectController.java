@@ -40,13 +40,6 @@ public class ProjectController {
 
         List<Project> project = projectRepo.findAll();
 		model.addAttribute("project",project);
-		try{
-			String path = new File(".").getCanonicalPath() + "/src/main/resources/static/images/upload";
-			model.addAttribute("path", path);
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
 		
 		return "project/project";
 	}
