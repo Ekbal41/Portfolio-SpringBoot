@@ -8,7 +8,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -28,7 +28,8 @@ import com.asifekbal.portfolio.repository.ProjectRepository;
 @Controller
 @CrossOrigin(origins = "*")
 public class ProjectController {
-	private final String UPLOAD_DIR ="./src/main/resources/static/images/project/";
+	//private final String UPLOAD_DIR ="./src/main/resources/static/images/project/";
+	Path UPLOAD_DIR = Paths.get(new FileSystemResource("static/images/project").getFile().getPath() );
 
 	@Autowired
 	ProjectRepository projectRepo;
