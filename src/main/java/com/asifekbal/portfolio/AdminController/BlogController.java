@@ -1,5 +1,6 @@
 package com.asifekbal.portfolio.AdminController;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,7 +9,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -30,9 +31,11 @@ import com.asifekbal.portfolio.repository.BlogRepository;
 public class BlogController {
 	//private final String UPLOAD_DIR ="./src/main/resources/static/images/blog/";
 	//private final String UPLOAD_DIR ="./uploads/";
-	Path UPLOAD_DIR = Paths.get(new FileSystemResource("src/main/resources/static/images/upload").getFile().getPath() );
-
-
+	//Path UPLOAD_DIR = Paths.get(new FileSystemResource("src/main/resources/static/images/upload").getFile().getPath() );
+   // String path = new File(".").getCanonicalPath() + "src/main/resources/static/images/upload";
+    
+ 
+   
 	@Autowired
 	BlogRepository blogRepo;
 
@@ -79,9 +82,11 @@ public class BlogController {
 
 		// normalize the file path
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+		
 
 		// save the file on the local file system
 		try {
+			String UPLOAD_DIR = new File(".").getCanonicalPath() + "/src/main/resources/static/images/upload";
 			Path path = Paths.get(UPLOAD_DIR + fileName);
 			Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {

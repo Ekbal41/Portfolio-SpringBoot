@@ -127,7 +127,8 @@
         </thead>
         <tbody>
           <tr th:each="project, sid : ${project}">
-            <td th:text="${sid.index + 1}"></td>
+            <td th:text="${path}"></td>
+           
             <td>
               <img
                 th:src="@{/images/upload}+${project.imagename}"
