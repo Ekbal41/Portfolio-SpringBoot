@@ -127,11 +127,11 @@
         </thead>
         <tbody>
           <tr th:each="project, sid : ${project}">
-            <td th:text="${path}"></td>
+            <td th:text="@{/}+${path}+${project.imagename}"></td>
            
             <td>
               <img
-                th:src="@{/images/upload}+${project.imagename}"
+                th:src="@{/}+${path}+${project.imagename}"
                 style="width: 30px; height: 30px"
               />
             </td>
