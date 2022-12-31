@@ -30,7 +30,7 @@ import com.asifekbal.portfolio.repository.BlogRepository;
 public class BlogController {
 	//private final String UPLOAD_DIR ="./src/main/resources/static/images/blog/";
 	//private final String UPLOAD_DIR ="./uploads/";
-	Path UPLOAD_DIR = Paths.get(new FileSystemResource("static/images/blog").getFile().getPath() );
+	Path UPLOAD_DIR = Paths.get(new FileSystemResource("src/main/resources/static/images/upload").getFile().getPath() );
 
 
 	@Autowired
