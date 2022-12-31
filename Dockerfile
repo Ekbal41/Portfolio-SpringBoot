@@ -8,7 +8,7 @@
     # Package stage
     #
     FROM openjdk:11-jre-slim
-    COPY src/main/resorces/static/images/
+    COPY src/main/resorces/static/images/ src/main/resorces/static/images/
     COPY --from=build /target/portfolio-0.0.1-SNAPSHOT.jar portfolio.jar
 
     # ENV PORT=8080
