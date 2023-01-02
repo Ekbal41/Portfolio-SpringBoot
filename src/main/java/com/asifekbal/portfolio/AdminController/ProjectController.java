@@ -70,26 +70,30 @@ public class ProjectController {
 	@PostMapping("admin/project/add/save")
 	public String saveExpense(@ModelAttribute Project project, @RequestParam("file") MultipartFile file,
 			RedirectAttributes attributes) {
-		// check if file is empty
-		if (file.isEmpty()) {
-			attributes.addFlashAttribute("message", "Please select a file to upload.");
-			return "redirect:/admin/project/add";
-		}
+		 // check if file is empty
+		 if (file.isEmpty()) {
+            attributes.addFlashAttribute("message", "Please select a file to upload.");
+            return "redirect:/admin/blog/add";
+        }
 
-		// normalize the file path
-		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        // normalize the file path
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
-		// save the file on the local file system
-		try {
-			String UPLOAD_DIR = new File(".").getCanonicalPath() + "/src/main/resources/static/images/upload";
-			Path path = Paths.get(UPLOAD_DIR + fileName);
-			Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		// return success response
-		attributes.addFlashAttribute("message", "You successfully uploaded " + fileName + '!');
+        // save the file on the local file system
+        String uploadDir = System.getProperty("user.dir") + "/uploads";
+        Path copyLocation = Paths.get(uploadDir + File.separator + fileName);
+        if (!Files.exists(copyLocation)) {
+            try {
+                Files.createDirectories(copyLocation);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 		project.setImagename(fileName);
 		projectRepo.save(project);

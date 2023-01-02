@@ -8,10 +8,14 @@
     # Package stage
     #
     FROM openjdk:11-jre-slim
-    RUN mkdir -p /src/main/resorces/static/images/
+  
     
     COPY --from=build /target/portfolio-0.0.1-SNAPSHOT.jar portfolio.jar
+    VOLUME storage:/uploads
 
     # ENV PORT=8080
     EXPOSE 8080
     ENTRYPOINT ["java","-jar","portfolio.jar"]
+
+
+
