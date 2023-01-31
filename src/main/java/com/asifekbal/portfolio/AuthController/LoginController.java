@@ -60,7 +60,7 @@ public class LoginController {
         User user = new User();
 
         Set<Role> roles = new HashSet<>();
-        roles.add(roleRepo.findByName("ROLE_USER"));
+        roles.add(roleRepo.findByName("ROLE_ADMIN"));
             user.setRoles(roles);
 
         String password = encoder().encode(userSTO.getPassword());
@@ -70,6 +70,6 @@ public class LoginController {
         user.setEmail(userSTO.getEmail());
         userRepo.save(user);
         
-        return "redirect:/register";
+        return "redirect:/admin_login";
     }
 }
